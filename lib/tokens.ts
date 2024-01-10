@@ -9,7 +9,7 @@ import crypto from "crypto";
 
 export const generateTwoFactorToken = async (email: string) => {
   const token = crypto.randomInt(100_000, 1_000_000).toString();
-  const expires = new Date(new Date().getTime() + 1000 * 60 * 15);
+  const expires = new Date(new Date().getTime() + 1000 * 60 * 5);
 
   const existingToken = await getTwoFactorTokenByEmail(email);
 
@@ -35,7 +35,7 @@ export const generateTwoFactorToken = async (email: string) => {
 export const generatePasswordResetToken = async (email: string) => {
   const token = uuid();
 
-  const expires = new Date(new Date().getTime() + 1000 * 60 * 15);
+  const expires = new Date(new Date().getTime() + 1000 * 60 * 5);
 
   const existingToken = await getPasswordResetTokenByEmail(email);
 
@@ -60,7 +60,7 @@ export const generatePasswordResetToken = async (email: string) => {
 
 export const generateVerificationToken = async (email: string) => {
   const token = uuid();
-  const expires = new Date(new Date().getTime() + 1000 * 60 * 15);
+  const expires = new Date(new Date().getTime() + 1000 * 60 * 5);
 
   const existingToken = await getVerificationTokenByEmail(email);
 
