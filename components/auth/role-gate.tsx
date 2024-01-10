@@ -12,7 +12,12 @@ interface RoleGateProps {
 
 export const RoleGate = ({ children, allowedRole }: RoleGateProps) => {
   const role = useCurrentRole();
-  return (
-    <FormError message='You do not have permission to view this content!' />
-  );
+
+  if (role !== allowedRole) {
+    return (
+      <FormError message='You do not have permission to view this content!' />
+    );
+  }
+
+  return <>{children}</>;
 };
